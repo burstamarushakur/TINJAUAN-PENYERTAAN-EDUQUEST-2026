@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduQuest 2026 - Tinjauan Penyertaan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Animasi peralihan halaman */
+        .view-section { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .view-active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Custom scrollbar untuk table */
+        .custom-scrollbar::-webkit-scrollbar { height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen p-4 md:p-8">
+
+    <script>
+        // URL Web App Apps Script Cikgu
+        const GAS_URL = "https://script.google.com/macros/s/AKfycbwFrUscegjJoRWo96tziBuLj2Cv7jDKs7cXylvZdWlfTVLFeLj6fs6r-ewqyCYnbvBN/exec";
+    </script>
+
+    <div class="max-w-5xl mx-auto space-y-8">
+        
+        <div class="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+            <img src="https://i.postimg.cc/3RF9M05N/Logo-SKSA.png" alt="Logo SKSA" class="h-16 md:h-20 object-contain">
+            <img src="https://i.postimg.cc/jqQq9xDF/Logo-Edu-Quest-2026.jpg" alt="EduQuest Logo" class="h-24 md:h-32 object-contain">
+            <img src="https://i.postimg.cc/3RF9M05N/Logo-SKSA.png" alt="Logo Unit Koku" class="h-16 md:h-20 object-contain">
+        </div>
+        <hr class="border-t-2 border-gray-300">
+
+        <div id="home-view" class="view-section view-active">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                
+                <div class="md:col-span-3 bg-blue-700 text-white rounded-3xl p-8 shadow-md">
+                    <h1 class="text-2xl md:text-3xl font-bold text-center mb-6 underline underline-offset-8">MAKLUMAN TINJAUAN PENYERTAAN</h1>
+                    <p class="text-lg text-center leading-relaxed font-medium">
+                        BORANG TINJAUAN INI BERTUJUAN UNTUK MENDAPATKAN MAKLUMAT AWAL KESEDIAAN PIHAK SEKOLAH BAGI MENYERTAI EDUQUEST 2026: KUIZ BADAN BERUNIFORM PERINGKAT KEBANGSAAN ANJURAN SEKOLAH KEBANGSAAN SUNGAI ABONG.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex flex-col items-center text-center space-y-4 hover:shadow-md transition">
+                    <i class="fa-solid fa-calendar-day text-4xl text-blue-600"></i>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Pelaksanaan Kuiz</h3>
+                        <p class="text-sm text-gray-600 mt-2">27 Jun 2026 (Online). Menunggu kelulusan BSKK, KPM.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex flex-col items-center text-center space-y-4 hover:shadow-md transition">
+                    <i class="fa-solid fa-tags text-4xl text-emerald-600"></i>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Yuran Penyertaan</h3>
+                        <p class="text-sm text-gray-600 mt-2">RM10.00 seorang murid. Pendaftaran melalui Guru Pengiring.</p>
+                    </div>
+                </div>
+
+                <div class="bg-rose-50 rounded-3xl p-6 shadow-sm border border-rose-100 flex flex-col items-center text-center space-y-4 hover:shadow-md transition">
+                    <i class="fa-solid fa-clock text-4xl text-rose-600"></i>
+                    <div>
+                        <h3 class="font-bold text-rose-900">Tarikh Tutup</h3>
+                        <p class="text-base text-rose-700 font-bold mt-2">Sila Lengkapkan Sebelum<br>21 Mei 2026</p>
+                    </div>
+                </div>
+
+                <div class="md:col-span-3 bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex flex-col md:flex-row items-center md:items-start gap-4">
+                    <i class="fa-solid fa-circle-info text-3xl text-amber-500 mt-1"></i>
+                    <p class="text-gray-700 leading-relaxed text-sm md:text-base text-center md:text-left font-medium">
+                        MAKLUMAT YANG DIPEROLEH AMAT PENTING BAGI PIHAK PENGANJUR UNTUK TUJUAN PEMBENTANGAN KEPADA PEGAWAI BERKENAAN MENGENAI SENARAI SEKOLAH YANG BERMINAT.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 justify-center pt-8">
+                <button onclick="switchView('form-view')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-5 px-10 rounded-2xl shadow-xl transition transform hover:-translate-y-1 active:scale-95">
+                    <i class="fa-solid fa-edit mr-2"></i> ISI BORANG TINJAUAN
+                </button>
+                <button onclick="switchView('results-view'); loadResults();" class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-5 px-10 rounded-2xl shadow-xl transition transform hover:-translate-y-1 active:scale-95">
+                    <i class="fa-solid fa-chart-simple mr-2"></i> LIHAT KEPUTUSAN
+                </button>
+            </div>
+        </div>
+
+        <div id="form-view" class="view-section">
+            <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-lg border border-gray-100 p-6 md:p-10">
+                <div class="flex items-center gap-4 mb-8">
+                    <button onclick="switchView('home-view')" class="p-2 hover:bg-gray-100 rounded-full transition">
+                        <i class="fa-solid fa-arrow-left text-xl text-gray-600"></i>
+                    </button>
+                    <h2 class="text-2xl font-bold text-gray-800">Borang Tinjauan Kesediaan</h2>
+                </div>
+
+                <form id="surveyForm" onsubmit="submitForm(event)" class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">NAMA SEKOLAH</label>
+                        <input required type="text" id="namaSekolah" oninput="this.value = this.value.toUpperCase()" placeholder="CONTOH: SK SUNGAI ABONG" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition">
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">KOD SEKOLAH</label>
+                            <input required type="text" id="kodSekolah" oninput="this.value = this.value.toUpperCase()" placeholder="JBA5043" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">PPD</label>
+                            <input required type="text" id="ppd" oninput="this.value = this.value.toUpperCase()" placeholder="PPD MUAR" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">NEGERI</label>
+                            <input required type="text" id="negeri" oninput="this.value = this.value.toUpperCase()" placeholder="JOHOR" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">ANGGARAN MURID</label>
+                            <input required type="text" id="anggaranMurid" oninput="this.value = this.value.toUpperCase()" placeholder="CTH: 25" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">NAMA GPK KOKURIKULUM</label>
+                        <input required type="text" id="namaGpk" oninput="this.value = this.value.toUpperCase()" placeholder="NAMA PENUH" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">NO. TELEFON GPK KOKU</label>
+                        <input required type="text" id="noTelGpk" oninput="this.value = this.value.toUpperCase()" placeholder="01X-XXXXXXX" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition">
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-5 rounded-2xl shadow-lg transition flex justify-center items-center disabled:opacity-50">
+                        HANTAR MAKLUM BALAS
+                    </button>
+                </form>
+
+                <div id="successMessage" class="hidden flex-col items-center justify-center py-12">
+                    <i class="fa-solid fa-circle-check text-7xl text-emerald-500 mb-6 animate-bounce"></i>
+                    <h2 class="text-3xl font-bold text-gray-800">Berjaya!</h2>
+                    <p class="text-gray-500 text-center mt-2">Data tinjauan sekolah anda telah selamat direkodkan.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="results-view" class="view-section">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-4">
+                    <button onclick="switchView('home-view')" class="p-2 bg-white hover:bg-gray-100 rounded-full shadow-sm transition">
+                        <i class="fa-solid fa-arrow-left text-xl text-gray-600"></i>
+                    </button>
+                    <h2 class="text-2xl font-bold text-gray-800">Senarai Sekolah Berminat</h2>
+                </div>
+                <button onclick="loadResults()" class="text-blue-600 font-bold hover:underline">
+                    <i class="fa-solid fa-sync-alt mr-1"></i> Refresh
+                </button>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-left text-sm text-gray-600 border-collapse">
+                        <thead class="bg-gray-50 text-gray-800 font-bold uppercase text-xs tracking-widest">
+                            <tr>
+                                <th class="p-5 border-b">Bil</th>
+                                <th class="p-5 border-b">Nama Sekolah</th>
+                                <th class="p-5 border-b">Kod Sekolah</th>
+                                <th class="p-5 border-b">PPD</th>
+                                <th class="p-5 border-b">Negeri</th>
+                                <th class="p-5 border-b text-center">Peserta</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody" class="divide-y divide-gray-50">
+                            <tr><td colspan="6" class="p-10 text-center text-gray-400"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Memuat turun data terkini...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function switchView(viewId) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('view-active'));
+            document.getElementById(viewId).classList.add('view-active');
+            
+            if(viewId === 'home-view') {
+                document.getElementById("surveyForm").reset();
+                document.getElementById("surveyForm").classList.remove("hidden");
+                document.getElementById("successMessage").classList.add("hidden");
+                document.getElementById("submitBtn").innerText = "HANTAR MAKLUM BALAS";
+                document.getElementById("submitBtn").disabled = false;
+            }
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            const btn = document.getElementById("submitBtn");
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> MENGHANTAR...';
+            btn.disabled = true;
+
+            const payload = {
+                namaSekolah: document.getElementById("namaSekolah").value,
+                kodSekolah: document.getElementById("kodSekolah").value,
+                ppd: document.getElementById("ppd").value,
+                negeri: document.getElementById("negeri").value,
+                anggaranMurid: document.getElementById("anggaranMurid").value,
+                namaGpk: document.getElementById("namaGpk").value,
+                noTelGpk: document.getElementById("noTelGpk").value
+            };
+
+            fetch(GAS_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain;charset=utf-8" },
+                body: JSON.stringify(payload)
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("surveyForm").classList.add("hidden");
+                document.getElementById("successMessage").classList.remove("hidden");
+                document.getElementById("successMessage").classList.add("flex");
+                setTimeout(() => switchView('home-view'), 3000);
+            })
+            .catch(err => {
+                alert("Ralat! Sila pastikan URL Web App betul.");
+                btn.innerText = "HANTAR MAKLUM BALAS";
+                btn.disabled = false;
+            });
+        }
+
+        function loadResults() {
+            const tbody = document.getElementById("tableBody");
+            tbody.innerHTML = '<tr><td colspan="6" class="p-10 text-center text-gray-400"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Memuat data...</td></tr>';
+
+            fetch(GAS_URL)
+            .then(res => res.json())
+            .then(result => {
+                if(result.status === "success" && result.data.length > 0) {
+                    let html = '';
+                    result.data.forEach((row, index) => {
+                        html += `
+                        <tr class="hover:bg-blue-50/50 transition">
+                            <td class="p-5 font-medium">${index + 1}</td>
+                            <td class="p-5 font-bold text-gray-900">${row['Nama Sekolah'] || '-'}</td>
+                            <td class="p-5 text-gray-500">${row['Kod Sekolah'] || '-'}</td>
+                            <td class="p-5">${row['PPD'] || '-'}</td>
+                            <td class="p-5">${row['Negeri'] || '-'}</td>
+                            <td class="p-5 text-center">
+                                <span class="bg-blue-100 text-blue-700 py-1.5 px-4 rounded-full font-bold text-xs">${row['Anggaran Murid'] || '0'}</span>
+                            </td>
+                        </tr>`;
+                    });
+                    tbody.innerHTML = html;
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="6" class="p-10 text-center text-gray-400">Tiada rekod ditemui.</td></tr>';
+                }
+            })
+            .catch(err => {
+                tbody.innerHTML = '<tr><td colspan="6" class="p-10 text-center text-red-500 font-bold">Gagal memuat turun data.</td></tr>';
+            });
+        }
+    </script>
+</body>
+</html>
